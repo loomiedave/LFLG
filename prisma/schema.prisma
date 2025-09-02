@@ -1,0 +1,66 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LicenseType {
+  PLAYER
+  COACH
+}
+
+enum LicenseStatus {
+  ACTIVE
+  EXPIRED
+  SUSPENDED
+  REVOKED
+}
+
+model License {
+  id              String        @id @default(cuid())
+  licenseNumber   String        @unique
+  licenseType     LicenseType   @default(PLAYER)
+  status          LicenseStatus @default(ACTIVE)
+  
+  // Personal Information
+  name            String
+  surname         String
+  dateOfBirth     DateTime
+  address         String
+  state           String
+  
+  // Club Information
+  district        String
+  clubName        String
+  
+  // Dates
+  registrationDate DateTime     @default(now())
+  expiryDate      DateTime?
+  
+  // Photo
+  photoUrl        String?
+  
+  // Renewal History
+  renewals        Renewal[]
+  
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  
+  @@map("licenses")
+}
+
+model Renewal {
+  id          String   @id @default(cuid())
+  licenseId   String
+  season      String
+  renewalDate DateTime @default(now())
+  notes       String?
+  
+  license     License  @relation(fields: [licenseId], references: [id], onDelete: Cascade)
+  
+  @@map("renewals")
+}
