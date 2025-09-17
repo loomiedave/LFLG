@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -6,6 +5,97 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model District {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  clubs     Club[]
+  @@map("districts")
+}
+
+model Club {
+  id         String   @id @default(cuid())
+  name       String
+  districtId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  district   District  @relation(fields: [districtId], references: [id], onDelete: Cascade)
+  licenses   License[]
+  
+  @@unique([name, districtId])
+  @@map("clubs")
+}
+
+model License {
+  id               String        @id @default(cuid())
+  licenseNumber    String        @unique
+  licenseType      LicenseType   @default(PLAYER)
+  status           LicenseStatus @default(ACTIVE)
+  name             String
+  surname          String
+  dateOfBirth      DateTime
+  address          String
+  clubId           String?       
+  club             Club?         @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  clubName         String       
+  district         String       
+  registrationDate DateTime      @default(now())
+  expiryDate       DateTime?
+  photoUrl         String?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  
+  renewals         Renewal[]
+  transfers        Transfer[]    
+  loans            Loan[]        
+  @@map("licenses")
+}
+
+model Renewal {
+  id          String   @id @default(cuid())
+  licenseId   String
+  season      String
+  renewalDate DateTime @default(now())
+  notes       String?
+  license     License  @relation(fields: [licenseId], references: [id], onDelete: Cascade)
+  
+  @@map("renewals")
+}
+
+model Transfer {
+  id          String         @id @default(cuid())
+  licenseId   String
+  fromClub    String
+  toClub      String
+  transferDate DateTime      @default(now())
+  type        TransferType   @default(PERMANENT)
+  status      TransferStatus @default(PENDING)
+  fee         Float?
+  season      String
+  notes       String?
+  
+  license     License        @relation(fields: [licenseId], references: [id], onDelete: Cascade)
+  @@map("transfers")
+}
+
+model Loan {
+  id          String      @id @default(cuid())
+  licenseId   String
+  parentClub  String
+  hostClub    String
+  startDate   DateTime
+  endDate     DateTime
+  status      LoanStatus  @default(ACTIVE)
+  season      String
+  notes       String?
+  
+  license     License     @relation(fields: [licenseId], references: [id], onDelete: Cascade)
+  @@map("loans")
 }
 
 enum LicenseType {
@@ -20,47 +110,20 @@ enum LicenseStatus {
   REVOKED
 }
 
-model License {
-  id              String        @id @default(cuid())
-  licenseNumber   String        @unique
-  licenseType     LicenseType   @default(PLAYER)
-  status          LicenseStatus @default(ACTIVE)
-  
-  // Personal Information
-  name            String
-  surname         String
-  dateOfBirth     DateTime
-  address         String
-  state           String
-  
-  // Club Information
-  district        String
-  clubName        String
-  
-  // Dates
-  registrationDate DateTime     @default(now())
-  expiryDate      DateTime?
-  
-  // Photo
-  photoUrl        String?
-  
-  // Renewal History
-  renewals        Renewal[]
-  
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-  
-  @@map("licenses")
+enum TransferType {
+  PERMANENT
+  TEMPORARY
 }
 
-model Renewal {
-  id          String   @id @default(cuid())
-  licenseId   String
-  season      String
-  renewalDate DateTime @default(now())
-  notes       String?
-  
-  license     License  @relation(fields: [licenseId], references: [id], onDelete: Cascade)
-  
-  @@map("renewals")
+enum TransferStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  COMPLETED
+}
+
+enum LoanStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
 }
