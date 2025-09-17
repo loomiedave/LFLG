@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Shield, Home, FileText, Plus, HomeIcon } from "lucide-react";
+import { Shield, Home, FileText, Plus, HomeIcon, PenIcon, TrophyIcon } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { ReactNode } from "react";
 
@@ -18,6 +18,16 @@ const adminNavLinks: { name: string; href: string; icon: ReactNode }[] = [
     name: "Clubs et Zone",
     href: "/admin/clubs&districts",
     icon: <HomeIcon className="w-4 h-4" />,
+  },
+  {
+    name: "Affiliations",
+    href: "/admin/clubs",
+    icon: <PenIcon className="w-4 h-4" />,
+  },
+  {
+    name: "Competitions",
+    href: "/admin/competitions",
+    icon: <TrophyIcon className="w-4 h-4" />,
   }
 ];
 
@@ -53,10 +63,6 @@ export default function AdminNav() {
 
           {/* Right Section: Public Site + User */}
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex px-3 py-2 rounded-md items-center gap-2 text-sm hover:bg-primary-dim hover:text-background transition">
-              <Home className="w-4 h-4" />
-              Site public
-            </Link>
             <UserButton afterSignOutUrl="/" />
           </div>
         </div>

@@ -98,6 +98,37 @@ model Loan {
   @@map("loans")
 }
 
+model Affiliation {
+  id             String   @id @default(cuid())
+  districtName   String
+  clubName       String
+  address        String
+  leader         String   // representative
+  contact        String
+  dateRegistered DateTime @default(now())
+  feesPaid       Decimal  @db.Decimal(10, 2)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("affiliations")
+}
+
+model Competition {
+  id               String   @id @default(cuid())
+  competitionTitle String
+  districtName     String
+  clubName         String
+  address          String
+  leader           String   // representative
+  contact          String
+  dateRegistered   DateTime @default(now())
+  feesPaid         Decimal  @db.Decimal(10, 2)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("competitions")
+}
+
 enum LicenseType {
   PLAYER
   COACH
