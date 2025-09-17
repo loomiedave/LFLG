@@ -9,6 +9,7 @@ export function licenseToFormData(license: License): EditFormData {
     dateOfBirth: license.dateOfBirth.split("T")[0],
     address: license.address,
     state: license.state,
+    clubId: license.clubId,
     district: license.district,
     clubName: license.clubName,
     photoUrl: license.photoUrl || "",

@@ -64,7 +64,7 @@ export default function ClubInfoSection({ formData, onChange }: ClubInfoSectionP
     } else {
       setFilteredClubs([]);
     }
-  }, [selectedDistrictId, clubs, districts]); // Removed onChange
+  }, [selectedDistrictId, clubs, districts, onChange]); 
 
   const handleDistrictChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedDistrictId(e.target.value);

@@ -51,6 +51,7 @@ export default function AdminPage() {
         alert(error.error || 'Failed to create district');
       }
     } catch (error) {
+      console.log(error)
       alert('Failed to create district');
     } finally {
       setSubmitting(false);
@@ -81,6 +82,7 @@ export default function AdminPage() {
         alert(error.error || 'Failed to create club');
       }
     } catch (error) {
+      console.log(error)
       alert('Failed to create club');
     } finally {
       setSubmitting(false);

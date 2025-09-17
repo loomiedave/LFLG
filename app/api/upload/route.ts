@@ -43,7 +43,6 @@ export async function POST(request: NextRequest) {
           },
         )
         .end(buffer);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     })) as any;
 
     return NextResponse.json({

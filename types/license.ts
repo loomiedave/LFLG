@@ -35,6 +35,7 @@ export interface License {
   address: string;
   state: string;
   district: string;
+  clubId: string;
   clubName: string;
   photoUrl?: string;
   expiryDate?: string;
