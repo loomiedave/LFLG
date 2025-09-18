@@ -1,20 +1,20 @@
 // app/admin/clubs/new/page.tsx
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { CreateAffiliationData } from '@/types/registry';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { CreateAffiliationData } from "@/types/registry";
 
 export default function NewClubPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<CreateAffiliationData>({
-    districtName: '',
-    clubName: '',
-    address: '',
-    leader: '',
-    contact: '',
+    districtName: "",
+    clubName: "",
+    address: "",
+    leader: "",
+    contact: "",
     feesPaid: 0,
   });
 
@@ -23,52 +23,56 @@ export default function NewClubPage() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/affiliations', {
-        method: 'POST',
+      const response = await fetch("/api/affiliations", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        router.push('/admin/clubs');
+        router.push("/admin/clubs");
       } else {
-        alert('Failed to register club');
+        alert("Failed to register club");
       }
     } catch (error) {
-      alert('Failed to register club');
+      alert("Failed to register club");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: name === 'feesPaid' ? parseFloat(value) || 0 : value
+      [name]: name === "feesPaid" ? parseFloat(value) || 0 : value,
     }));
   };
 
   return (
     <div className="p-6">
       <div className="mb-6">
-        <Link 
-          href="/admin/clubs"
-          className="text-blue-600 hover:text-blue-900"
-        >
+        <Link href="/admin/clubs" className="text-blue-600 hover:text-blue-900">
           ← Back to Clubs
         </Link>
       </div>
 
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-2xl mx-auto">
-        <h1 className="text-2xl font-bold text-gray-800 mb-8">Club Affiliation Form</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-8">
+          Club Affiliation Form
+        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="districtName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="districtName"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 District Name
               </label>
               <input
@@ -83,7 +87,10 @@ export default function NewClubPage() {
             </div>
 
             <div>
-              <label htmlFor="clubName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="clubName"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Club Name
               </label>
               <input
@@ -99,7 +106,10 @@ export default function NewClubPage() {
           </div>
 
           <div>
-            <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="address"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               Address
             </label>
             <textarea
@@ -115,7 +125,10 @@ export default function NewClubPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="leader" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="leader"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Representative
               </label>
               <input
@@ -130,7 +143,10 @@ export default function NewClubPage() {
             </div>
 
             <div>
-              <label htmlFor="contact" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="contact"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Contact
               </label>
               <input
@@ -146,7 +162,10 @@ export default function NewClubPage() {
           </div>
 
           <div>
-            <label htmlFor="feesPaid" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="feesPaid"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               Fees Paid (CFA)
             </label>
             <input
@@ -168,7 +187,7 @@ export default function NewClubPage() {
               disabled={loading}
               className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50"
             >
-              {loading ? 'Registering...' : 'Register Club'}
+              {loading ? "Registering..." : "Register Club"}
             </button>
             <Link
               href="/admin/clubs"

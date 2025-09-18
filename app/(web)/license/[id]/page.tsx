@@ -5,8 +5,13 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, User, FileText, Clock } from "lucide-react";
 
-import { formatDate, formatDateShort, getStatusColor, getStatusText } from "@/lib/utils";
-import { loremText1, loremText2 } from '@/config/loremipsum'
+import {
+  formatDate,
+  formatDateShort,
+  getStatusColor,
+  getStatusText,
+} from "@/lib/utils";
+import { loremText1, loremText2 } from "@/config/loremipsum";
 import { License } from "@/types/type";
 import Loading from "@/components/ui/Loading";
 
@@ -39,8 +44,6 @@ export default function LicensePage() {
       fetchLicense();
     }
   }, [params.id]);
-
- 
 
   if (loading) {
     return <Loading />;

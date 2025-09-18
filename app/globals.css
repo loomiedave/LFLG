@@ -69,36 +69,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* Add to your global CSS file (e.g., app/globals.css) */
-
-@media print {
-  /* Hide navbar and other elements */
-  nav, header, .navbar, .print\\:hidden {
-    display: none !important;
-  }
-  
-  /* Hide everything by default */
-  body * {
-    visibility: hidden;
-  }
-  
-  /* Show only the receipt */
-  .print-receipt, .print-receipt * {
-    visibility: visible;
-  }
-  
-  .print-receipt {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100% !important;
-    box-shadow: none !important;
-    margin: 0 !important;
-    padding: 20px !important;
-  }
-  
-  @page {
-    margin: 0.5in;
-  }
-}

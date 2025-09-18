@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { Shield, Home, FileText, Plus, HomeIcon, PenIcon, TrophyIcon } from "lucide-react";
+import {
+  Shield,
+  Home,
+  FileText,
+  Plus,
+  HomeIcon,
+  PenIcon,
+  TrophyIcon,
+} from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { ReactNode } from "react";
 
@@ -28,7 +36,7 @@ const adminNavLinks: { name: string; href: string; icon: ReactNode }[] = [
     name: "Competitions",
     href: "/admin/competitions",
     icon: <TrophyIcon className="w-4 h-4" />,
-  }
+  },
 ];
 
 export default function AdminNav() {

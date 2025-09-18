@@ -50,16 +50,16 @@ export default function EditLicensePage() {
     const fetchLicense = async () => {
       setFetchLoading(true);
       setError(null);
-      
+
       try {
         const response = await fetch(`/api/licenses/${licenseId}`);
         if (!response.ok) {
-          throw new Error('Failed to fetch license');
+          throw new Error("Failed to fetch license");
         }
         const data = await response.json();
         setLicense(data.license || data); // Handle both response formats
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : "An error occurred");
       } finally {
         setFetchLoading(false);
       }
@@ -71,11 +71,11 @@ export default function EditLicensePage() {
   useEffect(() => {
     if (license) {
       setFormData(licenseToFormData(license));
-      
+
       if (license.transfers) {
         const formattedTransfers = license.transfers.map((t: Transfer) => ({
           ...t,
-          transferDate: t.transferDate.split("T")[0]
+          transferDate: t.transferDate.split("T")[0],
         }));
         setTransfers(formattedTransfers);
       }
@@ -100,7 +100,9 @@ export default function EditLicensePage() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -131,17 +133,17 @@ export default function EditLicensePage() {
 
         <form onSubmit={handleSubmit} className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
-            <EditPersonalInfoSection 
-              formData={formData} 
-              onChange={handleChange} 
+            <EditPersonalInfoSection
+              formData={formData}
+              onChange={handleChange}
             />
 
             <div className="space-y-6">
-              <EditClubInfoSection 
-                formData={formData} 
-                onChange={handleChange} 
+              <EditClubInfoSection
+                formData={formData}
+                onChange={handleChange}
               />
-              <EditPhotoUploadSection 
+              <EditPhotoUploadSection
                 photoUrl={formData.photoUrl}
                 onPhotoChange={handlePhotoChange}
               />

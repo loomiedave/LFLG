@@ -32,31 +32,31 @@ export function formatDateShort(date: Date): string {
 }
 
 export const getStatusColor = (status: string) => {
-    switch (status) {
-      case "ACTIVE":
-        return "text-primary-foreground bg-success";
-      case "EXPIRED":
-        return "text-primary-foreground bg-destructive";
-      case "SUSPENDED":
-        return "text-primary-foreground bg-accent";
-      case "REVOKED":
-        return "text-primary-foreground bg-destructive";
-      default:
-        return "text-primary-foreground bg-muted-foreground";
-    }
-  };
+  switch (status) {
+    case "ACTIVE":
+      return "text-primary-foreground bg-success";
+    case "EXPIRED":
+      return "text-primary-foreground bg-destructive";
+    case "SUSPENDED":
+      return "text-primary-foreground bg-accent";
+    case "REVOKED":
+      return "text-primary-foreground bg-destructive";
+    default:
+      return "text-primary-foreground bg-muted-foreground";
+  }
+};
 
-  export const getStatusText = (status: string) => {
-    switch (status) {
-      case "ACTIVE":
-        return "Active";
-      case "EXPIRED":
-        return "Expirée";
-      case "SUSPENDED":
-        return "Suspendue";
-      case "REVOKED":
-        return "Révoquée";
-      default:
-        return status;
-    }
-  };
+export const getStatusText = (status: string) => {
+  switch (status) {
+    case "ACTIVE":
+      return "Active";
+    case "EXPIRED":
+      return "Expirée";
+    case "SUSPENDED":
+      return "Suspendue";
+    case "REVOKED":
+      return "Révoquée";
+    default:
+      return status;
+  }
+};

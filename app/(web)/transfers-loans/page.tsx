@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRightLeft, Building, User } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import Loading from "@/components/ui/Loading";
 import { getStatusColor, getStatusText } from "./_utils/utils";
-import { Transfer, Loan  } from "./_utils/types";
+import { Transfer, Loan } from "./_utils/types";
 import Header from "./_components/Header";
 
 export default function TransfersLoansPage() {
@@ -40,11 +40,13 @@ export default function TransfersLoansPage() {
     fetchData();
   }, []);
 
-  if (loading) {return <Loading /> }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
-     <Header />
+      <Header />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Tabs */}
         <div className="flex space-x-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-1 mb-8">
@@ -96,18 +98,10 @@ export default function TransfersLoansPage() {
                       <th className="text-left py-3 px-4 font-medium">
                         Joueur
                       </th>
-                      <th className="text-left py-3 px-4 font-medium">
-                        De
-                      </th>
-                      <th className="text-left py-3 px-4 font-medium">
-                        Vers
-                      </th>
-                      <th className="text-left py-3 px-4 font-medium">
-                        Date
-                      </th>
-                      <th className="text-left py-3 px-4 font-medium">
-                        Type
-                      </th>
+                      <th className="text-left py-3 px-4 font-medium">De</th>
+                      <th className="text-left py-3 px-4 font-medium">Vers</th>
+                      <th className="text-left py-3 px-4 font-medium">Date</th>
+                      <th className="text-left py-3 px-4 font-medium">Type</th>
                       <th className="text-left py-3 px-4 font-medium">
                         Statut
                       </th>

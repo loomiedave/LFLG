@@ -12,29 +12,29 @@ export function useTransfers() {
       id: `temp-${Date.now()}`,
       fromClub: "",
       toClub: "",
-      transferDate: new Date().toISOString().split('T')[0],
+      transferDate: new Date().toISOString().split("T")[0],
       type: "PERMANENT",
       status: "PENDING",
       season: new Date().getFullYear().toString(),
-      notes: ""
+      notes: "",
     };
     setTransfers([...transfers, newTransfer]);
   };
 
   const removeTransfer = (id: string) => {
-    setTransfers(transfers.filter(t => t.id !== id));
+    setTransfers(transfers.filter((t) => t.id !== id));
   };
 
   const updateTransfer = (id: string, field: keyof Transfer, value: any) => {
-    setTransfers(transfers.map(t => 
-      t.id === id ? { ...t, [field]: value } : t
-    ));
+    setTransfers(
+      transfers.map((t) => (t.id === id ? { ...t, [field]: value } : t)),
+    );
   };
 
   return {
     transfers,
     addTransfer,
     removeTransfer,
-    updateTransfer
+    updateTransfer,
   };
 }

@@ -21,8 +21,8 @@ export interface Renewal {
   notes?: string;
 }
 
-export type LicenseStatus = 'ACTIVE' | 'EXPIRED' | 'REVOKED' | "REVOKED";
-export type LicenseType = 'PLAYER' | 'COACH' ;
+export type LicenseStatus = "ACTIVE" | "EXPIRED" | "REVOKED" | "REVOKED";
+export type LicenseType = "PLAYER" | "COACH";
 
 export interface License {
   id: string;

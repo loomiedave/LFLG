@@ -1,16 +1,16 @@
-'use client';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { Districts } from '@/types/type'
+"use client";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { Districts } from "@/types/type";
 
 export default function DistrictsPage() {
   const [districts, setDistricts] = useState<Districts[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/districts')
-      .then(res => res.json())
-      .then(data => {
+    fetch("/api/districts")
+      .then((res) => res.json())
+      .then((data) => {
         setDistricts(data);
         setLoading(false);
       });
@@ -21,7 +21,7 @@ export default function DistrictsPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Districts</h1>
-      
+
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {districts.map((district) => (
           <Link

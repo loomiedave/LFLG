@@ -9,7 +9,10 @@ interface PhotoUploadSectionProps {
   onPhotoChange: (url: string) => void;
 }
 
-export default function PhotoUploadSection({ photoUrl, onPhotoChange }: PhotoUploadSectionProps) {
+export default function PhotoUploadSection({
+  photoUrl,
+  onPhotoChange,
+}: PhotoUploadSectionProps) {
   const [uploading, setUploading] = useState(false);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {

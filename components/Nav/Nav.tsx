@@ -16,13 +16,13 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-primary-foreground/95 backdrop-blur-sm border-b border-border">
         <div className="w-full px-1 sm:px-6 md:px-8 lg:px-12">
           <div className="flex items-center justify-between min-h-[100px] md:min-h-[120px] gap-4">
             {/* Left Logo */}
             <div className="flex-shrink-0">
               <Image
-                src="/spiderman.jpg"
+                src="/rightLogo.jpg"
                 alt="Left Logo"
                 width={60}
                 height={60}
@@ -53,7 +53,7 @@ const Nav = () => {
               <div className="flex flex-col items-center">
                 {/* Right Logo */}
                 <Image
-                  src="/spiderman.jpg"
+                  src="/rightLogo.jpg"
                   alt="Right Logo"
                   width={60}
                   height={60}

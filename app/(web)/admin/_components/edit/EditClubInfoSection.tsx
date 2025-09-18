@@ -1,5 +1,5 @@
-'use client';
-import { useState, useEffect } from 'react';
+"use client";
+import { useState, useEffect } from "react";
 import { EditFormData } from "@/types/license";
 
 interface District {
@@ -15,30 +15,37 @@ interface Club {
 
 interface EditClubInfoSectionProps {
   formData: EditFormData;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+  onChange: (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => void;
 }
 
-export default function EditClubInfoSection({ formData, onChange }: EditClubInfoSectionProps) {
+export default function EditClubInfoSection({
+  formData,
+  onChange,
+}: EditClubInfoSectionProps) {
   const [districts, setDistricts] = useState<District[]>([]);
   const [clubs, setClubs] = useState<Club[]>([]);
-  const [selectedDistrictId, setSelectedDistrictId] = useState('');
+  const [selectedDistrictId, setSelectedDistrictId] = useState("");
   const [filteredClubs, setFilteredClubs] = useState<Club[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [districtsRes, clubsRes] = await Promise.all([
-          fetch('/api/admin/districts'),
-          fetch('/api/admin/clubs')
+          fetch("/api/admin/districts"),
+          fetch("/api/admin/clubs"),
         ]);
-        
+
         const districtsData = await districtsRes.json();
         const clubsData = await clubsRes.json();
-        
+
         setDistricts(districtsData.districts || []);
         setClubs(clubsData.clubs || []);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -48,7 +55,7 @@ export default function EditClubInfoSection({ formData, onChange }: EditClubInfo
   // Set initial district when data loads and we have a clubId
   useEffect(() => {
     if (formData.clubId && clubs.length > 0 && !selectedDistrictId) {
-      const selectedClub = clubs.find(c => c.id === formData.clubId);
+      const selectedClub = clubs.find((c) => c.id === formData.clubId);
       if (selectedClub) {
         setSelectedDistrictId(selectedClub.districtId);
       }
@@ -57,7 +64,9 @@ export default function EditClubInfoSection({ formData, onChange }: EditClubInfo
 
   useEffect(() => {
     if (selectedDistrictId) {
-      const filtered = clubs.filter(club => club.districtId === selectedDistrictId);
+      const filtered = clubs.filter(
+        (club) => club.districtId === selectedDistrictId,
+      );
       setFilteredClubs(filtered);
     } else {
       setFilteredClubs([]);
@@ -70,15 +79,15 @@ export default function EditClubInfoSection({ formData, onChange }: EditClubInfo
 
   const handleClubChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const clubId = e.target.value;
-    const selectedClub = clubs.find(c => c.id === clubId);
-    
+    const selectedClub = clubs.find((c) => c.id === clubId);
+
     if (selectedClub) {
       onChange({
-        target: { name: 'clubId', value: clubId }
+        target: { name: "clubId", value: clubId },
       } as React.ChangeEvent<HTMLSelectElement>);
-      
+
       onChange({
-        target: { name: 'clubName', value: selectedClub.name }
+        target: { name: "clubName", value: selectedClub.name },
       } as React.ChangeEvent<HTMLSelectElement>);
     }
   };
@@ -88,7 +97,7 @@ export default function EditClubInfoSection({ formData, onChange }: EditClubInfo
       <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
         Informations du club
       </h2>
-      
+
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -101,7 +110,7 @@ export default function EditClubInfoSection({ formData, onChange }: EditClubInfo
             required
           >
             <option value="">Select District</option>
-            {districts.map(district => (
+            {districts.map((district) => (
               <option key={district.id} value={district.id}>
                 {district.name}
               </option>
@@ -114,14 +123,14 @@ export default function EditClubInfoSection({ formData, onChange }: EditClubInfo
             Club *
           </label>
           <select
-            value={formData.clubId || ''}
+            value={formData.clubId || ""}
             onChange={handleClubChange}
             disabled={!selectedDistrictId}
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:opacity-50"
             required
           >
             <option value="">Select Club</option>
-            {filteredClubs.map(club => (
+            {filteredClubs.map((club) => (
               <option key={club.id} value={club.id}>
                 {club.name}
               </option>

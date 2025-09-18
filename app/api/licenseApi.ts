@@ -20,19 +20,19 @@ export async function updateLicense(licenseId: string, formData: EditFormData) {
 
 export async function saveTransfers(licenseId: string, transfers: Transfer[]) {
   for (const transfer of transfers) {
-    if (transfer.id.startsWith('temp-')) {
+    if (transfer.id.startsWith("temp-")) {
       // Create new transfer
       const { id, ...transferData } = transfer;
       await fetch(`/api/licenses/${licenseId}/transfers`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(transferData),
       });
     } else {
       // Update existing transfer
       await fetch(`/api/transfers/${transfer.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(transfer),
       });
     }

@@ -33,8 +33,8 @@ export default function CreateLicensePage() {
     try {
       const response = await fetch("/api/licenses", {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' }, // Fix: add headers
-        body: JSON.stringify(formData) // Fix: send actual form data
+        headers: { "Content-Type": "application/json" }, // Fix: add headers
+        body: JSON.stringify(formData), // Fix: send actual form data
       });
 
       const data = await response.json();
@@ -52,7 +52,9 @@ export default function CreateLicensePage() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -72,18 +74,12 @@ export default function CreateLicensePage() {
         <form onSubmit={handleSubmit} className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left Column - Personal Info */}
-            <PersonalInfoSection 
-              formData={formData} 
-              onChange={handleChange} 
-            />
+            <PersonalInfoSection formData={formData} onChange={handleChange} />
 
             {/* Middle Column - Club Info & Photo */}
             <div className="space-y-6">
-              <ClubInfoSection 
-                formData={formData} 
-                onChange={handleChange} 
-              />
-              <PhotoUploadSection 
+              <ClubInfoSection formData={formData} onChange={handleChange} />
+              <PhotoUploadSection
                 photoUrl={formData.photoUrl}
                 onPhotoChange={handlePhotoChange}
               />

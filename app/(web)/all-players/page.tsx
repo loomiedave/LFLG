@@ -98,7 +98,9 @@ export default function PlayersPage() {
                   <p className="text-xs text-muted-foreground mt-1">
                     {player.clubName}
                   </p>
-                  <p className="text-xs text-muted-foreground opacity-70">{player.district}</p>
+                  <p className="text-xs text-muted-foreground opacity-70">
+                    {player.district}
+                  </p>
                 </div>
               </div>
             </Link>
@@ -107,7 +109,9 @@ export default function PlayersPage() {
 
         {players.length === 0 && (
           <div className="text-center py-12">
-            <div className="text-muted-foreground text-lg mb-2">No players found</div>
+            <div className="text-muted-foreground text-lg mb-2">
+              No players found
+            </div>
             <p className="text-muted-foreground opacity-70">
               There are currently no active players registered.
             </p>

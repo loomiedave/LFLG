@@ -40,8 +40,8 @@ export async function GET(request: NextRequest) {
       include: {
         club: {
           include: {
-            district: true
-          }
+            district: true,
+          },
         },
         renewals: {
           orderBy: { renewalDate: "desc" },
@@ -83,14 +83,11 @@ export async function POST(request: NextRequest) {
     // Validate club exists
     const club = await prisma.club.findUnique({
       where: { id: clubId },
-      include: { district: true }
+      include: { district: true },
     });
 
     if (!club) {
-      return NextResponse.json(
-        { error: "Club not found" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Club not found" }, { status: 400 });
     }
 
     // Generate unique license number
@@ -149,8 +146,8 @@ export async function POST(request: NextRequest) {
         include: {
           club: {
             include: {
-              district: true
-            }
+              district: true,
+            },
           },
           renewals: true,
           transfers: {

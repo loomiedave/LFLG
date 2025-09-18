@@ -15,8 +15,8 @@ export async function GET(
       include: {
         club: {
           include: {
-            district: true
-          }
+            district: true,
+          },
         },
         renewals: {
           orderBy: { renewalDate: "desc" },
@@ -73,14 +73,11 @@ export async function PUT(
     if (clubId) {
       const club = await prisma.club.findUnique({
         where: { id: clubId },
-        include: { district: true }
+        include: { district: true },
       });
 
       if (!club) {
-        return NextResponse.json(
-          { error: "Club not found" },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: "Club not found" }, { status: 400 });
       }
 
       // Update with club relationship
@@ -103,8 +100,8 @@ export async function PUT(
         include: {
           club: {
             include: {
-              district: true
-            }
+              district: true,
+            },
           },
           renewals: {
             orderBy: { renewalDate: "desc" },
@@ -136,8 +133,8 @@ export async function PUT(
         include: {
           club: {
             include: {
-              district: true
-            }
+              district: true,
+            },
           },
           renewals: {
             orderBy: { renewalDate: "desc" },

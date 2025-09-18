@@ -1,31 +1,31 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { District, Club } from '@/types/admin'
+"use client";
+import { useState, useEffect } from "react";
+import { District, Club } from "@/types/admin";
 
 export default function AdminPage() {
   const [districts, setDistricts] = useState<District[]>([]);
   const [clubs, setClubs] = useState<Club[]>([]);
   const [loading, setLoading] = useState(true);
-  
-  const [districtName, setDistrictName] = useState('');
-  const [clubName, setClubName] = useState('');
-  const [selectedDistrictId, setSelectedDistrictId] = useState('');
+
+  const [districtName, setDistrictName] = useState("");
+  const [clubName, setClubName] = useState("");
+  const [selectedDistrictId, setSelectedDistrictId] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const fetchData = async () => {
     try {
       const [districtsRes, clubsRes] = await Promise.all([
-        fetch('/api/admin/districts'),
-        fetch('/api/admin/clubs')
+        fetch("/api/admin/districts"),
+        fetch("/api/admin/clubs"),
       ]);
-      
+
       const districtsData = await districtsRes.json();
       const clubsData = await clubsRes.json();
-      
+
       setDistricts(districtsData.districts || []);
       setClubs(clubsData.clubs || []);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
     }
@@ -34,25 +34,25 @@ export default function AdminPage() {
   const createDistrict = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!districtName.trim() || submitting) return;
-    
+
     setSubmitting(true);
     try {
-      const res = await fetch('/api/admin/districts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: districtName })
+      const res = await fetch("/api/admin/districts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: districtName }),
       });
-      
+
       if (res.ok) {
-        setDistrictName('');
+        setDistrictName("");
         fetchData();
       } else {
         const error = await res.json();
-        alert(error.error || 'Failed to create district');
+        alert(error.error || "Failed to create district");
       }
     } catch (error) {
-      console.log(error)
-      alert('Failed to create district');
+      console.log(error);
+      alert("Failed to create district");
     } finally {
       setSubmitting(false);
     }
@@ -61,29 +61,29 @@ export default function AdminPage() {
   const createClub = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!clubName.trim() || !selectedDistrictId || submitting) return;
-    
+
     setSubmitting(true);
     try {
-      const res = await fetch('/api/admin/clubs', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          name: clubName, 
-          districtId: selectedDistrictId 
-        })
+      const res = await fetch("/api/admin/clubs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: clubName,
+          districtId: selectedDistrictId,
+        }),
       });
-      
+
       if (res.ok) {
-        setClubName('');
-        setSelectedDistrictId('');
+        setClubName("");
+        setSelectedDistrictId("");
         fetchData();
       } else {
         const error = await res.json();
-        alert(error.error || 'Failed to create club');
+        alert(error.error || "Failed to create club");
       }
     } catch (error) {
-      console.log(error)
-      alert('Failed to create club');
+      console.log(error);
+      alert("Failed to create club");
     } finally {
       setSubmitting(false);
     }
@@ -98,7 +98,7 @@ export default function AdminPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <h1 className="text-3xl font-bold mb-8">Administration - Clubs & Zone</h1>
-      
+
       <div className="grid gap-8 lg:grid-cols-2">
         {/* Create District */}
         <div className="bg-background border rounded-lg p-6">
@@ -117,7 +117,7 @@ export default function AdminPage() {
               disabled={submitting || !districtName.trim()}
               className="w-full bg-primary text-background p-3 rounded-lg hover:bg-primary-dim disabled:opacity-50"
             >
-              {submitting ? 'Creating...' : 'Create District'}
+              {submitting ? "Creating..." : "Create District"}
             </button>
           </form>
         </div>
@@ -133,7 +133,7 @@ export default function AdminPage() {
               disabled={submitting}
             >
               <option value="">Select District</option>
-              {districts.map(district => (
+              {districts.map((district) => (
                 <option key={district.id} value={district.id}>
                   {district.name}
                 </option>
@@ -152,7 +152,7 @@ export default function AdminPage() {
               disabled={submitting || !clubName.trim() || !selectedDistrictId}
               className="w-full bg-primary text-background p-3 rounded-lg hover:bg-primary-dim disabled:opacity-50"
             >
-              {submitting ? 'Creating...' : 'Create Club'}
+              {submitting ? "Creating..." : "Create Club"}
             </button>
           </form>
         </div>
@@ -160,10 +160,15 @@ export default function AdminPage() {
 
       {/* Districts List */}
       <div className="mt-8 bg-background border-muted-foreground text-foreground border rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">Zone ({districts.length})</h2>
+        <h2 className="text-xl font-semibold mb-4">
+          Zone ({districts.length})
+        </h2>
         <div className="grid gap-2">
-          {districts.map(district => (
-            <div key={district.id} className="flex justify-between items-center p-3 bg-border rounded">
+          {districts.map((district) => (
+            <div
+              key={district.id}
+              className="flex justify-between items-center p-3 bg-border rounded"
+            >
               <span className="font-medium">{district.name}</span>
               <span className="text-sm">{district._count.clubs} clubs</span>
             </div>
@@ -175,11 +180,16 @@ export default function AdminPage() {
       <div className="mt-8 bg-background border-muted-foreground text-foreground border rounded-lg p-6">
         <h2 className="text-xl font-semibold mb-4">Clubs ({clubs.length})</h2>
         <div className="grid gap-2">
-          {clubs.map(club => (
-            <div key={club.id} className="flex justify-between items-center p-3 bg-border rounded">
+          {clubs.map((club) => (
+            <div
+              key={club.id}
+              className="flex justify-between items-center p-3 bg-border rounded"
+            >
               <div>
                 <span className="font-medium">{club.name}</span>
-                <span className="text-sm text-muted-foreground ml-2">({club.district.name})</span>
+                <span className="text-sm text-muted-foreground ml-2">
+                  ({club.district.name})
+                </span>
               </div>
               <span className="text-sm">{club._count.licenses} players</span>
             </div>

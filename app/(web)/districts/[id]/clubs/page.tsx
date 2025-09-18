@@ -1,8 +1,8 @@
-'use client';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import { DistrictWithClubs } from '@/types/type';
+"use client";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import { DistrictWithClubs } from "@/types/type";
 
 export default function ClubsPage() {
   const params = useParams();
@@ -15,15 +15,15 @@ export default function ClubsPage() {
       setLoading(false);
       return;
     }
-    
+
     fetch(`/api/districts/${params.id}/clubs`)
-      .then(res => {
-        console.log('Response status:', res.status);
+      .then((res) => {
+        console.log("Response status:", res.status);
         return res.json();
       })
-      .then(data => {
-        console.log('Frontend received:', data);
-        
+      .then((data) => {
+        console.log("Frontend received:", data);
+
         // Check if response contains error
         if (data.error) {
           setError(data.error);
@@ -34,9 +34,9 @@ export default function ClubsPage() {
         }
         setLoading(false);
       })
-      .catch(error => {
-        console.error('Fetch error:', error);
-        setError('Failed to fetch district data');
+      .catch((error) => {
+        console.error("Fetch error:", error);
+        setError("Failed to fetch district data");
         setLoading(false);
       });
   }, [params.id]);
@@ -48,13 +48,15 @@ export default function ClubsPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <nav className="mb-6 text-sm text-muted-foreground">
-        <Link href="/districts" className="hover:text-primary">Districts</Link>
+        <Link href="/districts" className="hover:text-primary">
+          Districts
+        </Link>
         <span> / </span>
         <span>{district.name}</span>
       </nav>
 
       <h1 className="text-3xl font-bold mb-8">Clubs in {district.name}</h1>
-      
+
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {district.clubs.map((club) => (
           <Link

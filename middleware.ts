@@ -11,7 +11,7 @@ const isPublicRoute = createRouteMatcher([
   "/sponsorship",
   "/transfers-loans",
   "/clubs(.*)",
-  "/districts(.*)"
+  "/districts(.*)",
 ]);
 
 export default clerkMiddleware(async (auth, req) => {

@@ -69,4 +69,3 @@ export interface EditFormData {
   photoUrl: string;
   expiryDate: string;
 }
-

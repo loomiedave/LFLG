@@ -15,13 +15,20 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="text-center">
           {/* Logo/Icon */}
-          <div className="flex justify-center mb-8">
-            {/* PLACEHOLDER FOR SOMETHING */}
+          <div className="flex justify-center mb-8 opacity-30">
+            <div className="relative">
+              <img
+                src="/rightLogo.jpg"
+                alt="Logo"
+                className="h-32 w-auto object-contain rounded-lg shadow-lg"
+                style={{ height: "30vh", maxHeight: "200px" }}
+              />
+            </div>
           </div>
 
           {/* Main Heading */}
           <h1 className="text-4xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-             DISTRICT PREFECTORAL DE FOOTBALL LOME-GOLFE
+            DISTRICT PREFECTORAL DE FOOTBALL LOME-GOLFE
           </h1>
 
           {/* Subtitle */}

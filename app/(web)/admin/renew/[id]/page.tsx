@@ -85,7 +85,9 @@ export default function RenewLicensePage() {
     }));
   };
 
-  if (fetchLoading) { return <Loading /> }
+  if (fetchLoading) {
+    return <Loading />;
+  }
 
   if (!license) {
     return (

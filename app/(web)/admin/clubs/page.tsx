@@ -1,9 +1,9 @@
 // app/admin/clubs/page.tsx
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Affiliation } from '@/types/registry';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Affiliation } from "@/types/registry";
 
 export default function ClubsPage() {
   const [clubs, setClubs] = useState<Affiliation[]>([]);
@@ -15,13 +15,13 @@ export default function ClubsPage() {
 
   const fetchClubs = async () => {
     try {
-      const response = await fetch('/api/affiliations');
+      const response = await fetch("/api/affiliations");
       if (response.ok) {
         const data = await response.json();
         setClubs(data);
       }
     } catch (error) {
-      console.error('Failed to fetch clubs:', error);
+      console.error("Failed to fetch clubs:", error);
     } finally {
       setLoading(false);
     }
@@ -33,7 +33,7 @@ export default function ClubsPage() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Registered Clubs</h1>
-        <Link 
+        <Link
           href="/admin/clubs/new"
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
@@ -48,30 +48,46 @@ export default function ClubsPage() {
           <table className="min-w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Club Name</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">District</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Leader</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date Registered</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Fees</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Club Name
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  District
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Leader
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Date Registered
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Fees
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {clubs.map((club) => (
                 <tr key={club.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">
-                    <Link 
+                    <Link
                       href={`/admin/clubs/${club.id}`}
                       className="text-blue-600 hover:text-blue-900 font-medium"
                     >
                       {club.clubName}
                     </Link>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">{club.districtName}</td>
-                  <td className="px-6 py-4 text-sm text-gray-900">{club.leader}</td>
+                  <td className="px-6 py-4 text-sm text-gray-900">
+                    {club.districtName}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-900">
+                    {club.leader}
+                  </td>
                   <td className="px-6 py-4 text-sm text-gray-900">
                     {new Date(club.dateRegistered).toLocaleDateString()}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">${club.feesPaid}</td>
+                  <td className="px-6 py-4 text-sm text-gray-900">
+                    ${club.feesPaid}
+                  </td>
                 </tr>
               ))}
             </tbody>

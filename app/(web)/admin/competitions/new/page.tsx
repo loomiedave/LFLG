@@ -1,21 +1,21 @@
 // app/admin/competitions/new/page.tsx
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { CreateCompetitionData } from '@/types/registry';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { CreateCompetitionData } from "@/types/registry";
 
 export default function NewCompetitionPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<CreateCompetitionData>({
-    competitionTitle: '',
-    districtName: '',
-    clubName: '',
-    address: '',
-    leader: '',
-    contact: '',
+    competitionTitle: "",
+    districtName: "",
+    clubName: "",
+    address: "",
+    leader: "",
+    contact: "",
     feesPaid: 0,
   });
 
@@ -24,46 +24,56 @@ export default function NewCompetitionPage() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/competitions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/competitions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        router.push('/admin/competitions');
+        router.push("/admin/competitions");
       } else {
-        alert('Failed to register competition');
+        alert("Failed to register competition");
       }
     } catch (error) {
-      alert('Failed to register competition');
+      alert("Failed to register competition");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: name === 'feesPaid' ? parseFloat(value) || 0 : value
+      [name]: name === "feesPaid" ? parseFloat(value) || 0 : value,
     }));
   };
 
   return (
     <div className="p-6">
       <div className="mb-6">
-        <Link href="/admin/competitions" className="text-blue-600 hover:text-blue-900">
+        <Link
+          href="/admin/competitions"
+          className="text-blue-600 hover:text-blue-900"
+        >
           ← Back to Competitions
         </Link>
       </div>
 
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-2xl mx-auto">
-        <h1 className="text-2xl font-bold text-gray-800 mb-8">Competition Registration Form</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-8">
+          Competition Registration Form
+        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="competitionTitle" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="competitionTitle"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               Competition Title
             </label>
             <input
@@ -79,7 +89,10 @@ export default function NewCompetitionPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="districtName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="districtName"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 District Name
               </label>
               <input
@@ -94,7 +107,10 @@ export default function NewCompetitionPage() {
             </div>
 
             <div>
-              <label htmlFor="clubName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="clubName"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Club Name
               </label>
               <input
@@ -110,7 +126,10 @@ export default function NewCompetitionPage() {
           </div>
 
           <div>
-            <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="address"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               Address
             </label>
             <textarea
@@ -126,7 +145,10 @@ export default function NewCompetitionPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="leader" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="leader"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Representative
               </label>
               <input
@@ -141,7 +163,10 @@ export default function NewCompetitionPage() {
             </div>
 
             <div>
-              <label htmlFor="contact" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="contact"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Contact
               </label>
               <input
@@ -157,7 +182,10 @@ export default function NewCompetitionPage() {
           </div>
 
           <div>
-            <label htmlFor="feesPaid" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="feesPaid"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               Fees Paid (CFA)
             </label>
             <input
@@ -179,7 +207,7 @@ export default function NewCompetitionPage() {
               disabled={loading}
               className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50"
             >
-              {loading ? 'Registering...' : 'Register Competition'}
+              {loading ? "Registering..." : "Register Competition"}
             </button>
             <Link
               href="/admin/competitions"

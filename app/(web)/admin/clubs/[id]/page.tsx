@@ -1,10 +1,10 @@
 // app/admin/clubs/[id]/page.tsx
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import Link from 'next/link';
-import { Affiliation } from '@/types/registry';
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { Affiliation } from "@/types/registry";
 
 export default function ClubDetailPage() {
   const [club, setClub] = useState<Affiliation | null>(null);
@@ -25,7 +25,7 @@ export default function ClubDetailPage() {
         setClub(data);
       }
     } catch (error) {
-      console.error('Failed to fetch club:', error);
+      console.error("Failed to fetch club:", error);
     } finally {
       setLoading(false);
     }
@@ -41,13 +41,10 @@ export default function ClubDetailPage() {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6 print:hidden">
-        <Link 
-          href="/admin/clubs"
-          className="text-blue-600 hover:text-blue-900"
-        >
+        <Link href="/admin/clubs" className="text-blue-600 hover:text-blue-900">
           ← retourne
         </Link>
-        <button 
+        <button
           onClick={handlePrint}
           className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
         >
@@ -57,42 +54,60 @@ export default function ClubDetailPage() {
 
       <div className="bg-white shadow-lg rounded-lg p-8 print:shadow-none">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">Recu d'Affiliation</h1>
+          <h1 className="text-3xl font-bold text-gray-800">
+            Recu d&pos;Affiliation
+          </h1>
           <div className="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-600 mb-1">Zone</label>
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
+                Zone
+              </label>
               <p className="text-lg text-gray-800">{club.districtName}</p>
             </div>
-            
+
             <div>
-              <label className="block text-sm font-semibold text-gray-600 mb-1">Nom du clube</label>
-              <p className="text-lg text-gray-800 font-medium">{club.clubName}</p>
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
+                Nom du clube
+              </label>
+              <p className="text-lg text-gray-800 font-medium">
+                {club.clubName}
+              </p>
             </div>
-            
+
             <div>
-              <label className="block text-sm font-semibold text-gray-600 mb-1">Addresse</label>
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
+                Addresse
+              </label>
               <p className="text-lg text-gray-800">{club.address}</p>
             </div>
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-600 mb-1">Representative</label>
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
+                Representative
+              </label>
               <p className="text-lg text-gray-800">{club.leader}</p>
             </div>
-            
+
             <div>
-              <label className="block text-sm font-semibold text-gray-600 mb-1">Contacte</label>
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
+                Contacte
+              </label>
               <p className="text-lg text-gray-800">{club.contact}</p>
             </div>
-            
+
             <div>
-              <label className="block text-sm font-semibold text-gray-600 mb-1">Date</label>
-              <p className="text-lg text-gray-800">{new Date(club.dateRegistered).toLocaleDateString()}</p>
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
+                Date
+              </label>
+              <p className="text-lg text-gray-800">
+                {new Date(club.dateRegistered).toLocaleDateString()}
+              </p>
             </div>
           </div>
         </div>
@@ -100,7 +115,9 @@ export default function ClubDetailPage() {
         <div className="mt-8 pt-6 border-t border-gray-200">
           <div className="flex justify-between items-center">
             <span className="text-xl font-semibold text-gray-700">Paye :</span>
-            <span className="text-2xl font-bold text-green-600">{club.feesPaid} CFA</span>
+            <span className="text-2xl font-bold text-green-600">
+              {club.feesPaid} CFA
+            </span>
           </div>
         </div>
 
