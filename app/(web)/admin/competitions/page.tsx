@@ -16,41 +16,43 @@ export default function CompetitionsPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="p-6">Loading...</div>;
+  if (loading) return <div className="p-6">Chargement...</div>;
 
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Competitions</h1>
+        <h1 className="text-2xl font-bold">Compétitions</h1>
         <Link
           href="/admin/competitions/new"
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
-          Register New Competition
+          Enregistrer un nouveau compétitions
         </Link>
       </div>
 
       {competitions.length === 0 ? (
-        <p className="text-gray-500">No competitions registered yet.</p>
+        <p className="text-gray-500">
+          Aucune compétition n'est encore enregistrée.
+        </p>
       ) : (
         <div className="bg-white shadow rounded-lg">
           <table className="min-w-full">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  Competition Title
+                  Titre
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  Club
+                  Nom du club
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  District
+                  Nom du district
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  Date
+                  Date d'inscription
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  Fees
+                  Frais
                 </th>
               </tr>
             </thead>
@@ -75,7 +77,7 @@ export default function CompetitionsPage() {
                     {new Date(comp.dateRegistered).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-900">
-                    ${comp.feesPaid}
+                    {comp.feesPaid} CFA
                   </td>
                 </tr>
               ))}

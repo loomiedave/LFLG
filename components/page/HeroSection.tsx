@@ -15,12 +15,12 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="text-center">
           {/* Logo/Icon */}
-          <div className="flex justify-center mb-8 opacity-30">
+          <div className="flex justify-center mb-8 opacity-50">
             <div className="relative">
               <img
-                src="/rightLogo.jpg"
+                src="/leftImage.png"
                 alt="Logo"
-                className="h-32 w-auto object-contain rounded-lg shadow-lg"
+                className="h-32 w-auto object-contain rounded-2xl shadow-lg"
                 style={{ height: "30vh", maxHeight: "200px" }}
               />
             </div>
@@ -31,10 +31,10 @@ export default function HeroSection() {
             DISTRICT PREFECTORAL DE FOOTBALL LOME-GOLFE
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle 
           <p className="text-xl lg:text-2xl text-primary font-bold max-w-3xl mx-auto mb-8 leading-relaxed">
             COMMITE ZONE 4 : NYEKONAKPOE-KODJOVIAKOPE-HANOUKOPE
-          </p>
+          </p> */}
 
           {/* Call to Action */}
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 max-w-2xl mx-auto">

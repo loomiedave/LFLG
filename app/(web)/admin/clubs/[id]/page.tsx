@@ -42,13 +42,13 @@ export default function ClubDetailPage() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6 print:hidden">
         <Link href="/admin/clubs" className="text-blue-600 hover:text-blue-900">
-          ← retourne
+          ← retour
         </Link>
         <button
           onClick={handlePrint}
           className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
         >
-          telecharge
+          Telecharge
         </button>
       </div>
 
@@ -64,14 +64,14 @@ export default function ClubDetailPage() {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Zone
+                District
               </label>
               <p className="text-lg text-gray-800">{club.districtName}</p>
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Nom du clube
+                Nom du club
               </label>
               <p className="text-lg text-gray-800 font-medium">
                 {club.clubName}
@@ -89,21 +89,21 @@ export default function ClubDetailPage() {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Representative
+                Representatif
               </label>
               <p className="text-lg text-gray-800">{club.leader}</p>
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Contacte
+                Contact
               </label>
               <p className="text-lg text-gray-800">{club.contact}</p>
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Date
+                date d'enregistrement
               </label>
               <p className="text-lg text-gray-800">
                 {new Date(club.dateRegistered).toLocaleDateString()}
@@ -114,7 +114,7 @@ export default function ClubDetailPage() {
 
         <div className="mt-8 pt-6 border-t border-gray-200">
           <div className="flex justify-between items-center">
-            <span className="text-xl font-semibold text-gray-700">Paye :</span>
+            <span className="text-xl font-semibold text-gray-700"> :</span>
             <span className="text-2xl font-bold text-green-600">
               {club.feesPaid} CFA
             </span>
@@ -122,8 +122,8 @@ export default function ClubDetailPage() {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-500 print:block">
-          <p>Registration ID: {club.id}</p>
-          <p>Generated on: {new Date().toLocaleDateString()}</p>
+          <p>ID d'enregistrement: {club.id}</p>
+          <p>le: {new Date().toLocaleDateString()}</p>
         </div>
       </div>
     </div>

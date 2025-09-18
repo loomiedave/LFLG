@@ -4,6 +4,7 @@ import "./globals.css";
 
 import Nav from "@/components/Nav/Nav";
 import { ThemeProvider } from "@/components/theme-provider";
+import Footer from "@/components/page/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
             <Nav />
             <main className="">{children}</main>
           </ThemeProvider>
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

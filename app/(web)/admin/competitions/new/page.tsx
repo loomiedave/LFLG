@@ -33,10 +33,10 @@ export default function NewCompetitionPage() {
       if (response.ok) {
         router.push("/admin/competitions");
       } else {
-        alert("Failed to register competition");
+        alert("Erreur de connexion : Échec de l'enregistrement");
       }
     } catch (error) {
-      alert("Failed to register competition");
+      alert("Erreur de connexion : Échec de l'enregistrement");
     } finally {
       setLoading(false);
     }
@@ -59,13 +59,13 @@ export default function NewCompetitionPage() {
           href="/admin/competitions"
           className="text-blue-600 hover:text-blue-900"
         >
-          ← Back to Competitions
+          ← retour
         </Link>
       </div>
 
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold text-gray-800 mb-8">
-          Competition Registration Form
+          Formulaire d&apos;inscription au Competition
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -74,7 +74,7 @@ export default function NewCompetitionPage() {
               htmlFor="competitionTitle"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Competition Title
+              Titre
             </label>
             <input
               type="text"
@@ -93,7 +93,7 @@ export default function NewCompetitionPage() {
                 htmlFor="districtName"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                District Name
+                Nom du district
               </label>
               <input
                 type="text"
@@ -111,7 +111,7 @@ export default function NewCompetitionPage() {
                 htmlFor="clubName"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Club Name
+                Nom du club
               </label>
               <input
                 type="text"
@@ -130,7 +130,7 @@ export default function NewCompetitionPage() {
               htmlFor="address"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Address
+              Addresse
             </label>
             <textarea
               id="address"
@@ -186,7 +186,7 @@ export default function NewCompetitionPage() {
               htmlFor="feesPaid"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Fees Paid (CFA)
+              Frais payés (CFA)
             </label>
             <input
               type="number"
@@ -207,7 +207,7 @@ export default function NewCompetitionPage() {
               disabled={loading}
               className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50"
             >
-              {loading ? "Registering..." : "Register Competition"}
+              {loading ? "Enregistrement..." : "Inscription au competition"}
             </button>
             <Link
               href="/admin/competitions"

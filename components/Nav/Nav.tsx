@@ -16,17 +16,18 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-primary-foreground/95 backdrop-blur-sm border-b border-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-destructive-foreground backdrop-blur-sm border-b border-border">
         <div className="w-full px-1 sm:px-6 md:px-8 lg:px-12">
           <div className="flex items-center justify-between min-h-[100px] md:min-h-[120px] gap-4">
             {/* Left Logo */}
             <div className="flex-shrink-0">
               <Image
-                src="/rightLogo.jpg"
-                alt="Left Logo"
-                width={60}
-                height={60}
-                className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
+                src="/centerImage.png"
+                alt="Right Logo"
+                width={0} // required by Next.js, but set to 0 if using "sizes"
+                height={0}
+                sizes="(max-width: 768px) 48px, (max-width: 1024px) 64px, 80px"
+                className="h-20 w-auto lg:h-24"
                 priority
               />
             </div>
@@ -35,29 +36,34 @@ const Nav = () => {
             <div className="flex-1 px-2 sm:px-4 md:px-6 lg:px-8">
               <div className="flex flex-col justify-center items-center h-full space-y-1">
                 <h2 className="text-sm sm:text-success md:text-lg lg:text-xl xl:text-2xl font-semibold text-blue-600 text-center leading-tight">
-                  Ministiere des Sports et des Loisirs
+                  Ministère des Sports et des Loisirs
                 </h2>
 
-                <h3 className="text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl font-medium text-foreground text-center leading-tight">
-                  Federation Togolaise de football
+                <h3 className="text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl font-medium text-gray-800 text-center leading-tight">
+                  Fédération togolaise de football
                 </h3>
 
                 <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-4xl font-bold text-primary text-center leading-tight max-w-full">
                   LIGUE REGIONALE DE FOOTBALL LOME-GOLFE
                 </h1>
+
+                <h2 className="text-sm  md:text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900 text-center leading-tight">
+                  DISTRICT PRÉFECTORAL DE FOOTBALL LOME-GOLFE
+                </h2>
               </div>
             </div>
 
             {/* Right Side - Logo and Menu Button */}
             <div className="flex-shrink-0">
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center mt-1">
                 {/* Right Logo */}
                 <Image
                   src="/rightLogo.jpg"
                   alt="Right Logo"
-                  width={60}
-                  height={60}
-                  className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
+                  width={0} // required by Next.js, but set to 0 if using "sizes"
+                  height={0}
+                  sizes="(max-width: 768px) 48px, (max-width: 1024px) 64px, 80px"
+                  className="h-20 lg:h-24 w-auto"
                   priority
                 />
 
@@ -68,7 +74,7 @@ const Nav = () => {
                   aria-label="Toggle navigation menu"
                   aria-expanded={isMenuOpen}
                 >
-                  <div className="w-5 h-5 relative">
+                  <div className="w-5 h-5 relative text-gray-800">
                     <Menu
                       className={`absolute inset-0 transition-all duration-200 ${isMenuOpen ? "opacity-0 rotate-180" : "opacity-100 rotate-0"}`}
                     />

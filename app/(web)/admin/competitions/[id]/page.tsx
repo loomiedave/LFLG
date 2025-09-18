@@ -24,8 +24,9 @@ export default function CompetitionDetailPage() {
     window.print();
   };
 
-  if (loading) return <div className="p-6">Loading...</div>;
-  if (!competition) return <div className="p-6">Competition not found</div>;
+  if (loading) return <div className="p-6">chargement...</div>;
+  if (!competition)
+    return <div className="p-6">erreur: Compétition introuvable</div>;
 
   return (
     <div className="p-6">
@@ -65,7 +66,7 @@ export default function CompetitionDetailPage() {
 
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Zone
+                District
               </label>
               <p className="text-lg text-gray-800">
                 {competition.districtName}
@@ -74,7 +75,7 @@ export default function CompetitionDetailPage() {
 
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Nom du Clube
+                Nom du Club
               </label>
               <p className="text-lg text-gray-800">{competition.clubName}</p>
             </div>
@@ -90,21 +91,21 @@ export default function CompetitionDetailPage() {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Representative
+                Representatif
               </label>
               <p className="text-lg text-gray-800">{competition.leader}</p>
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Contacte
+                Contact
               </label>
               <p className="text-lg text-gray-800">{competition.contact}</p>
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                Date Registerer
+                date d'enregistrement
               </label>
               <p className="text-lg text-gray-800">
                 {new Date(competition.dateRegistered).toLocaleDateString()}
@@ -115,7 +116,9 @@ export default function CompetitionDetailPage() {
 
         <div className="mt-8 pt-6 border-t border-gray-200">
           <div className="flex justify-between items-center">
-            <span className="text-xl font-semibold text-gray-700">Payer:</span>
+            <span className="text-xl font-semibold text-gray-700">
+              frais payés:
+            </span>
             <span className="text-2xl font-bold text-green-600">
               CFA{competition.feesPaid}
             </span>
@@ -123,8 +126,8 @@ export default function CompetitionDetailPage() {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Registration ID: {competition.id}</p>
-          <p>Generated on: {new Date().toLocaleDateString()}</p>
+          <p>ID d'enregistrement: {competition.id}</p>
+          <p>le: {new Date().toLocaleDateString()}</p>
         </div>
       </div>
     </div>

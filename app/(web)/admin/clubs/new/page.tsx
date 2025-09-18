@@ -57,7 +57,7 @@ export default function NewClubPage() {
     <div className="p-6">
       <div className="mb-6">
         <Link href="/admin/clubs" className="text-blue-600 hover:text-blue-900">
-          ← Back to Clubs
+          ← retour
         </Link>
       </div>
 
@@ -73,7 +73,7 @@ export default function NewClubPage() {
                 htmlFor="districtName"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                District Name
+                Nom du district
               </label>
               <input
                 type="text"
@@ -91,7 +91,7 @@ export default function NewClubPage() {
                 htmlFor="clubName"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Club Name
+                Nom du club
               </label>
               <input
                 type="text"
@@ -110,7 +110,7 @@ export default function NewClubPage() {
               htmlFor="address"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Address
+              Addresse
             </label>
             <textarea
               id="address"
@@ -129,7 +129,7 @@ export default function NewClubPage() {
                 htmlFor="leader"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Representative
+                Représentatif
               </label>
               <input
                 type="text"
@@ -166,7 +166,7 @@ export default function NewClubPage() {
               htmlFor="feesPaid"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Fees Paid (CFA)
+              Frais payés (CFA)
             </label>
             <input
               type="number"
@@ -187,7 +187,7 @@ export default function NewClubPage() {
               disabled={loading}
               className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50"
             >
-              {loading ? "Registering..." : "Register Club"}
+              {loading ? "Enregistrement..." : "Inscrire un club"}
             </button>
             <Link
               href="/admin/clubs"

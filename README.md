@@ -1,1 +1,1 @@
-Copyright (c) 2025 [LIGUE FOOTBALL DE LOME GOLFE (By Benjamin David - loomiedave)]
+Copyright (c) 2025 [DISTRICT PREFECTORAL DE FOOTBALL LOME-GOLFE (By Benjamin David - loomiedave)]

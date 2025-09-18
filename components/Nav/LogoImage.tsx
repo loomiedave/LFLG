@@ -1,3 +1,5 @@
+// rounded-full overflow-hidden
+
 export default function LogoImage({
   src,
   alt = "Logo",
@@ -6,9 +8,9 @@ export default function LogoImage({
   alt?: string;
 }) {
   return (
-    <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-gray-200 bg-gray-100">
+    <div className="inline-flex items-center justify-center  border-2 border-gray-200 bg-gray-100 max-w-[2rem] max-h-[2rem]">
       {src ? (
-        <img src={src} alt={alt} className="w-full h-full object-cover" />
+        <img src={src} alt={alt} className="w-auto h-full object-contain" />
       ) : (
         <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
           <span className="text-xs font-medium text-gray-600">

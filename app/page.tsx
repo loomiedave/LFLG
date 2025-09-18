@@ -138,7 +138,6 @@ export default function HomePage() {
 
       <FeaturesSection />
       <ConstactInfo />
-      <Footer />
     </div>
   );
 }
