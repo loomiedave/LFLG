@@ -27,7 +27,7 @@ const Nav = () => {
                 width={0} // required by Next.js, but set to 0 if using "sizes"
                 height={0}
                 sizes="(max-width: 768px) 48px, (max-width: 1024px) 64px, 80px"
-                className="h-20 w-auto lg:h-24"
+                className="h-18 w-auto lg:h-24"
                 priority
               />
             </div>
