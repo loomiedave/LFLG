@@ -18,7 +18,7 @@ export default function HeroSection() {
           <div className="flex justify-center mb-8 opacity-50">
             <div className="relative">
               <img
-                src="/leftImage.png"
+                src="/rightLogo.png"
                 alt="Logo"
                 className="h-32 w-auto object-contain rounded-2xl shadow-lg"
                 style={{ height: "30vh", maxHeight: "200px" }}
