@@ -1,3 +1,5 @@
+
+import { Metadata } from 'next'
 import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -7,6 +9,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/page/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: 'D.P.F.L.G',
+  description: 'DISTRICT PREFECTORAL DE FOOTBALL LOME-GOLFE',
+};
 
 export default function RootLayout({
   children,

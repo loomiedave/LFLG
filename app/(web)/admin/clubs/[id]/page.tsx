@@ -103,7 +103,7 @@ export default function ClubDetailPage() {
 
             <div>
               <label className="block text-sm font-semibold text-gray-600 mb-1">
-                date d'enregistrement
+                date d&apos;enregistrement
               </label>
               <p className="text-lg text-gray-800">
                 {new Date(club.dateRegistered).toLocaleDateString()}
@@ -122,7 +122,7 @@ export default function ClubDetailPage() {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-500 print:block">
-          <p>ID d'enregistrement: {club.id}</p>
+          <p>ID d&apos;enregistrement: {club.id}</p>
           <p>le: {new Date().toLocaleDateString()}</p>
         </div>
       </div>

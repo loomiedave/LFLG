@@ -32,7 +32,7 @@ export default function CompetitionsPage() {
 
       {competitions.length === 0 ? (
         <p className="text-gray-500">
-          Aucune compétition n'est encore enregistrée.
+          Aucune compétition n&apos;est encore enregistrée.
         </p>
       ) : (
         <div className="bg-white shadow rounded-lg">
@@ -49,7 +49,7 @@ export default function CompetitionsPage() {
                   Nom du district
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  Date d'inscription
+                  Date d&apos;inscription
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Frais
