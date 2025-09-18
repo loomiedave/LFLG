@@ -58,7 +58,7 @@ const Nav = () => {
               <div className="flex flex-col items-center mt-1">
                 {/* Right Logo */}
                 <Image
-                  src="leftImage.jpg"
+                  src="leftImage.png"
                   alt="Right Logo"
                   width={0} // required by Next.js, but set to 0 if using "sizes"
                   height={0}
