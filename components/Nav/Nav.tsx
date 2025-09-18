@@ -57,6 +57,7 @@ const Nav = () => {
             <div className="flex-shrink-0">
               <div className="flex flex-col items-center mt-1">
                 {/* Right Logo */}
+                <div className="opacity-70 rounded-2xl">
                 <Image
                   src="leftImage.png"
                   alt="Right Logo"
@@ -66,6 +67,7 @@ const Nav = () => {
                   className="h-18 lg:h-24 w-auto"
                   priority
                 />
+                </div>
 
                 {/* Menu Button - Below Logo */}
                 <button
