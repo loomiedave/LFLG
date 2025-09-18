@@ -55,7 +55,7 @@ export default function ClubDetailPage() {
       <div className="bg-white shadow-lg rounded-lg p-8 print:shadow-none">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">
-            Recu d&pos;Affiliation
+            Recu - Affiliation
           </h1>
           <div className="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
         </div>
@@ -114,7 +114,7 @@ export default function ClubDetailPage() {
 
         <div className="mt-8 pt-6 border-t border-gray-200">
           <div className="flex justify-between items-center">
-            <span className="text-xl font-semibold text-gray-700"> :</span>
+            <span className="text-xl font-semibold text-gray-700">frais payés:</span>
             <span className="text-2xl font-bold text-green-600">
               {club.feesPaid} CFA
             </span>

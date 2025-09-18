@@ -1,7 +1,7 @@
 export const navigationItems = [
   { id: "home", label: "Home", href: "/" },
   { id: "districts", label: "Zone", href: "/districts" },
-  { id: "players", label: "Jouers", href: "/all-players" },
+  { id: "players", label: "Joueurs", href: "/all-players" },
   { id: "admin", label: "Administration", href: "/admin" },
   {
     id: "transfers-loans",
