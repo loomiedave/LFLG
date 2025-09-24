@@ -5,7 +5,6 @@ import { Search, FileText, Users } from "lucide-react";
 import HeroSection from "@/components/page/HeroSection";
 import FeaturesSection from "@/components/page/FeaturesSection";
 import ConstactInfo from "@/components/page/ContactInfo";
-import Footer from "@/components/page/Footer";
 
 export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState("");

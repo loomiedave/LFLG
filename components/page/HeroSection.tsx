@@ -3,7 +3,6 @@ import { FileText, Trophy, Users, Calendar } from "lucide-react";
 export default function HeroSection() {
   return (
     <div className="relative overflow-hidden ">
-      {/* Background Image Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
         style={{
@@ -15,13 +14,12 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="text-center">
           {/* Logo/Icon */}
-          <div className="flex justify-center mb-8 opacity-50">
+          <div className="flex justify-center mb-8 md:opacity-80">
             <div className="relative">
               <img
-                src="/rightLogo.jpg"
+                src="/LOGO.png"
                 alt="Logo"
-                className="h-32 w-auto object-contain rounded-2xl shadow-lg"
-                style={{ height: "30vh", maxHeight: "200px" }}
+                className="md:h-72 h-48 w-auto object-contain"
               />
             </div>
           </div>

@@ -22,7 +22,7 @@ export default function ConstactInfo() {
               Adresse
             </h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm">
-              Siège FTF, Lomé
+              Siège DPFLG, Lomé
               <br />
               Togo
             </p>

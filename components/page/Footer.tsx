@@ -18,7 +18,7 @@ export default function Footer() {
 
           <div className="border-t border-gray-700 pt-8">
             <p className="text-gray-400 mb-2">
-              © {new Date().getFullYear()} Fédération Togolaise de Football -
+              © {new Date().getFullYear()}
               DISTRICT PREFECTORAL DE FOOTBALL LOME-GOLFE
             </p>
             <p className="text-sm text-gray-500">

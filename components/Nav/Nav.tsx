@@ -35,9 +35,9 @@ const Nav = () => {
             {/* Center Text Content - Takes remaining space */}
             <div className="flex-1 px-2 sm:px-4 md:px-6 lg:px-8">
               <div className="flex flex-col justify-center items-center h-full space-y-1">
-                <h2 className="text-sm sm:text-success md:text-lg lg:text-xl xl:text-2xl font-semibold text-blue-600 text-center leading-tight">
+             {/*   <h2 className=" text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold text-blue-600 text-center leading-tight">
                   Ministère des Sports et des Loisirs
-                </h2>
+                </h2> */}
 
                 <h3 className="text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl font-medium text-gray-800 text-center leading-tight">
                   Fédération togolaise de football
@@ -56,18 +56,15 @@ const Nav = () => {
             {/* Right Side - Logo and Menu Button */}
             <div className="flex-shrink-0">
               <div className="flex flex-col items-center mt-1">
-                {/* Right Logo */}
-                <div className="opacity-70 rounded-2xl">
                 <Image
-                  src="leftImage.png"
+                  src="/Ball-Logo.png"
                   alt="Right Logo"
-                  width={0} // required by Next.js, but set to 0 if using "sizes"
+                  width={0}
                   height={0}
-                  sizes="(max-width: 768px) 48px, (max-width: 1024px) 64px, 80px"
-                  className="h-14 lg:h-24 w-auto"
+                  sizes=" 48px, 80px"
+                  className="h-24 w-auto"
                   priority
                 />
-                </div>
 
                 {/* Menu Button - Below Logo */}
                 <button
