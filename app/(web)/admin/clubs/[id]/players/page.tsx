@@ -124,7 +124,7 @@ export default function PlayersPage() {
       )}
 
       <div ref={printRef}>
-        <div className="bg-white p-4">
+        <div className="bg-white p-4 text-black">
           <PrintPageHeader />
           <h1 className="text-xl font-bold mb-2 text-gray-600">{club.name}</h1>
           <div className="grid grid-cols-4 gap-2">

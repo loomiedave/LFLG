@@ -101,7 +101,7 @@ export default function PlayerPage() {
       </div>
 
       <div ref={printRef}>
-        <div className="bg-white p-8 max-w-4xl mx-auto ">
+        <div className="bg-white text-black p-8 max-w-4xl mx-auto ">
           {/* Main Card */}
           <div className="border-2 border-black mb-4">
             <div className="border border-gray-800 m-2 rounded-lg">
@@ -182,6 +182,11 @@ export default function PlayerPage() {
                 <p className="text-sm">
                   {formatDate(new Date(license.registrationDate))}
                 </p>
+              </div>
+              <div className="text-center">
+                <p className="text-sm font-semibold">Signature de l&apos;administration:</p>
+
+                <div className="w-32 h-12 border-b-2 border-black mt-2"></div>
               </div>
               <div className="text-right">
                 <p className="text-sm font-semibold">Signature:</p>
