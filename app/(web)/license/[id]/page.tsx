@@ -215,14 +215,14 @@ export default function LicensePage() {
           </span>
         </div>
         <div className="pt-4">
-          <p className="text-sm text-gray-500 mb-1">Date d'enregistrement</p>
+          <p className="text-sm text-gray-500 mb-1">Date d&apos;enregistrement</p>
           <p className="font-semibold text-gray-900">
             {formatDate(new Date(license.registrationDate))}
           </p>
         </div>
         {license.expiryDate && (
           <div className="pt-4">
-            <p className="text-sm text-gray-500 mb-1">Date d'expiration</p>
+            <p className="text-sm text-gray-500 mb-1">Date d&apos;expiration</p>
             <p className="font-semibold text-gray-900">
               {formatDate(new Date(license.expiryDate))}
             </p>

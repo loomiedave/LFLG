@@ -33,7 +33,7 @@ export default function Modal({ text, type }: ModalProp) {
               onClick={handleClose}
               className="px-6 py-2 bg-blue-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              Retour à l'administration
+              Retour à l&apos;administration
             </button>
           </div>
         </div>

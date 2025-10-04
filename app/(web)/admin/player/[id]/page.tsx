@@ -178,7 +178,7 @@ export default function PlayerPage() {
             {/* Bottom Row */}
             <div className="flex justify-between items-center pt-4 border-t-2 border-black">
               <div>
-                <p className="text-sm font-semibold">Date d'enregistrement:</p>
+                <p className="text-sm font-semibold">Date d&apos;enregistrement:</p>
                 <p className="text-sm">
                   {formatDate(new Date(license.registrationDate))}
                 </p>
