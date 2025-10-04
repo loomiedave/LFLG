@@ -46,7 +46,7 @@ export default function ClubsPage() {
   if (!district) return <div className="p-8">District not found</div>;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-8">
       <nav className="mb-6 text-sm text-muted-foreground">
         <Link href="/districts" className="hover:text-primary">
           Districts

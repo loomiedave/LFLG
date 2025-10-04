@@ -42,7 +42,7 @@ export default function PlayersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-muted p-8">
+    <div className="min-h-screen bg-muted p-8 mt-8 ">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground">Players</h1>

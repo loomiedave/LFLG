@@ -1,10 +1,9 @@
-import type { ClassValue } from "clsx";
-import { clsx } from "clsx";
+import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-export const cn = (...inputs: ClassValue[]) => {
+export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
-};
+}
 
 export function generateLicenseNumber(): string {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -60,3 +59,21 @@ export const getStatusText = (status: string) => {
       return status;
   }
 };
+
+export function getAge(dateOfBirth: string): number {
+  if (!dateOfBirth) return 0;
+
+  const today = new Date();
+  const birthDate = new Date(dateOfBirth);
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
+
+  // If birthday hasn’t happened yet this year, subtract 1
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
+  }
+
+  return age;
+}

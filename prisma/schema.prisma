@@ -44,6 +44,7 @@ model License {
   club             Club?         @relation(fields: [clubId], references: [id], onDelete: Cascade)
   clubName         String       
   district         String       
+  state            String        @default("Agou")
   registrationDate DateTime      @default(now())
   expiryDate       DateTime?
   photoUrl         String?

@@ -1,5 +1,4 @@
-
-import { Metadata } from 'next'
+import { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -11,8 +10,9 @@ import Footer from "@/components/page/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'D.P.F.L.G',
-  description: 'DISTRICT PREFECTORAL DE FOOTBALL LOME-GOLFE',
+  title: "D.P.F.L.G",
+  description: "DISTRICT PREFECTORAL DE FOOTBALL LOME-GOLFE",
+  icons: "/LOGO.png",
 };
 
 export default function RootLayout({
@@ -23,8 +23,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html className="h-full" suppressHydrationWarning>
-        <body
-          className={`${inter.className} h-full bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}
+      <body
+          className={`${inter.className} flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}
         >
           <ThemeProvider
             attribute="class"
@@ -34,9 +34,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Nav />
-            <main className="">{children}</main>
+            <main className="flex-1">{children}</main>
+            <Footer />
           </ThemeProvider>
-          <Footer />
         </body>
       </html>
     </ClerkProvider>

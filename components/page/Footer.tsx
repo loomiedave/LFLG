@@ -1,17 +1,12 @@
 import Link from "next/link";
-import { FileText } from "lucide-react";
 
 export default function Footer() {
-
   const devSite = process.env.NEXT_PUBLIC_DEV_SITE;
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white py-12">
+    <footer className="bg-gray-900 dark:bg-black text-white py-12 ">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <div className="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-6">
-            <FileText className="w-6 h-6 text-white" />
-          </div>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
             Système officiel de DISTRICT PREFECTORAL DE FOOTBALL LOME-GOLFE
           </p>

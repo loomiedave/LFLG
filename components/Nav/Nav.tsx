@@ -24,18 +24,16 @@ const Nav = () => {
               <Image
                 src="/centerImage.png"
                 alt="Right Logo"
-                width={0} // required by Next.js, but set to 0 if using "sizes"
-                height={0}
-                sizes="(max-width: 768px) 48px, (max-width: 1024px) 64px, 80px"
+                width={96}
+                height={96}
                 className="h-18 w-auto lg:h-24"
                 priority
               />
             </div>
 
-            {/* Center Text Content - Takes remaining space */}
             <div className="flex-1 px-2 sm:px-4 md:px-6 lg:px-8">
               <div className="flex flex-col justify-center items-center h-full space-y-1">
-             {/*   <h2 className=" text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold text-blue-600 text-center leading-tight">
+                {/*   <h2 className=" text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold text-blue-600 text-center leading-tight">
                   Ministère des Sports et des Loisirs
                 </h2> */}
 
@@ -57,11 +55,10 @@ const Nav = () => {
             <div className="flex-shrink-0">
               <div className="flex flex-col items-center mt-1">
                 <Image
-                  src="/Ball-Logo.png"
+                  src="/LOGO.png"
                   alt="Right Logo"
-                  width={0}
-                  height={0}
-                  sizes=" 48px, 80px"
+                  width={96}
+                  height={96}
                   className="h-24 w-auto"
                   priority
                 />

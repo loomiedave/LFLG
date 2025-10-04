@@ -20,7 +20,7 @@ export default function ClubsPage() {
   if (loading) return <Loading />;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 mt-8  py-8">
       <h1 className="text-3xl font-bold mb-8">Clubs</h1>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

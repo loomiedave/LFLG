@@ -90,7 +90,7 @@ export async function PUT(
           dateOfBirth: new Date(dateOfBirth),
           address,
           clubId,
-          // Update old fields for backward compatibility
+          state,
           clubName: club.name,
           district: club.district.name,
           photoUrl,
@@ -126,6 +126,7 @@ export async function PUT(
           surname,
           dateOfBirth: new Date(dateOfBirth),
           address,
+          state,
           photoUrl,
           expiryDate: expiryDate ? new Date(expiryDate) : null,
           status,

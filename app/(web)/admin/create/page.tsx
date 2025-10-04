@@ -1,17 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import CreateHeader from "../_components/create/CreateHeader";
 import PersonalInfoSection from "../_components/create/PersonalInfoSection";
 import ClubInfoSection from "../_components/create/ClubInfoSection";
 import PhotoUploadSection from "../_components/create/PhotoUploadSection";
 import { LicenseFormData } from "@/types/license";
+import Modal from "../_components/create/Modal";
+import AdminNav from "../_components/nav/AdminNav";
+
+interface ModalState {
+  text: string;
+  type: "success" | "error";
+}
 
 export default function CreateLicensePage() {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [modalMessage, setModalMessage] = useState<ModalState | null>(null);
   const [formData, setFormData] = useState<LicenseFormData>({
     licenseType: "PLAYER",
     name: "",
@@ -21,7 +27,7 @@ export default function CreateLicensePage() {
     state: "",
     district: "",
     clubName: "",
-    clubId: "", // Add this field
+    clubId: "",
     photoUrl: "",
     expiryDate: "",
   });
@@ -33,19 +39,26 @@ export default function CreateLicensePage() {
     try {
       const response = await fetch("/api/licenses", {
         method: "POST",
-        headers: { "Content-Type": "application/json" }, // Fix: add headers
-        body: JSON.stringify(formData), // Fix: send actual form data
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to create license");
+        if (response.status === 409) {
+          setModalMessage({ text: data?.error, type: "error" });
+        } else {
+          setModalMessage({ text: data?.error, type: "error" });
+        }
+        return;
       }
-
-      router.push("/admin");
+      setModalMessage({ text: "Licence créé avec succèss", type: "success" });
     } catch (err) {
-      alert(err instanceof Error ? err.message : "An error occurred");
+      setModalMessage({
+        text: err instanceof Error ? err.message : "Une erreur est survenue",
+        type: "error",
+      });
     } finally {
       setLoading(false);
     }
@@ -68,15 +81,15 @@ export default function CreateLicensePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <AdminNav />
       <CreateHeader />
-
+      {modalMessage && (
+        <Modal text={modalMessage.text} type={modalMessage.type} />
+      )}
       <div className="container mx-auto px-4 py-8">
         <form onSubmit={handleSubmit} className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Left Column - Personal Info */}
             <PersonalInfoSection formData={formData} onChange={handleChange} />
-
-            {/* Middle Column - Club Info & Photo */}
             <div className="space-y-6">
               <ClubInfoSection formData={formData} onChange={handleChange} />
               <PhotoUploadSection
@@ -85,8 +98,6 @@ export default function CreateLicensePage() {
               />
             </div>
           </div>
-
-          {/* Submit Buttons */}
           <div className="mt-8 flex justify-end gap-4">
             <Link
               href="/admin"

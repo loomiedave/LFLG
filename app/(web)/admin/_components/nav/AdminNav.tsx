@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Shield,
-  Home,
   FileText,
   Plus,
   HomeIcon,
@@ -42,7 +41,7 @@ const adminNavLinks: { name: string; href: string; icon: ReactNode }[] = [
 export default function AdminNav() {
   return (
     <nav className="bg-background text-foreground shadow-lg border-b">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-8">
             {/* Left Section: Logo + Title */}
@@ -60,9 +59,8 @@ export default function AdminNav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="flex items-center gap-2 border border-primary-dim px-3 py-2 text-sm font-medium rounded-md hover:bg-primary-dim hover:text-background transition"
+                  className="flex items-center gap-2 p-2 text-xs font-medium rounded-md hover:bg-gray-200 hover:text-gray transition whitespace-nowrap"
                 >
-                  {link.icon}
                   {link.name}
                 </Link>
               ))}

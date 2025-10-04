@@ -47,7 +47,7 @@ export default function PlayersPage() {
   const activePlayers = club.licenses.filter((p) => p.status === "ACTIVE");
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 mt-12 py-8">
       <nav className="mb-6 text-sm text-muted-foreground">
         <Link href="/districts" className="hover:text-primary">
           Districts

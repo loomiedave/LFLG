@@ -114,7 +114,9 @@ export default function ClubDetailPage() {
 
         <div className="mt-8 pt-6 border-t border-gray-200">
           <div className="flex justify-between items-center">
-            <span className="text-xl font-semibold text-gray-700">frais payés:</span>
+            <span className="text-xl font-semibold text-gray-700">
+              frais payés:
+            </span>
             <span className="text-2xl font-bold text-green-600">
               {club.feesPaid} CFA
             </span>

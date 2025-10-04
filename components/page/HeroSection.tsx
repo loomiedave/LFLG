@@ -14,10 +14,10 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="text-center">
           {/* Logo/Icon */}
-          <div className="flex justify-center mb-8 md:opacity-80">
+          <div className="flex justify-center mb-8">
             <div className="relative">
               <img
-                src="/LOGO.png"
+                src="/Ball-Logo.png"
                 alt="Logo"
                 className="md:h-72 h-48 w-auto object-contain"
               />

@@ -1,6 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import { District, Club } from "@/types/admin";
+import AdminNav from "../_components/nav/AdminNav";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function AdminPage() {
   const [districts, setDistricts] = useState<District[]>([]);
@@ -96,104 +104,126 @@ export default function AdminPage() {
   if (loading) return <div className="p-8">Loading...</div>;
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <h1 className="text-3xl font-bold mb-8">Administration - Clubs & Zone</h1>
+    <div className="min-h-screen">
+      <AdminNav />
+      <div className="container px-4">
+        <h1 className="text-3xl font-bold mb-8 mt-4 ">Clubs & District</h1>
 
-      <div className="grid gap-8 lg:grid-cols-2">
-        {/* Create District */}
-        <div className="bg-background border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Create District</h2>
-          <form onSubmit={createDistrict}>
-            <input
-              type="text"
-              value={districtName}
-              onChange={(e) => setDistrictName(e.target.value)}
-              placeholder="District name"
-              className="w-full p-3 border rounded-lg mb-4"
-              disabled={submitting}
-            />
-            <button
-              type="submit"
-              disabled={submitting || !districtName.trim()}
-              className="w-full bg-primary text-background p-3 rounded-lg hover:bg-primary-dim disabled:opacity-50"
-            >
-              {submitting ? "Creating..." : "Create District"}
-            </button>
-          </form>
+        <div className="grid gap-8 lg:grid-cols-2">
+          {/* Create District */}
+          <div className="bg-background border rounded-lg p-6">
+            <h2 className="text-xl font-semibold mb-4">
+              Enregistrer un district
+            </h2>
+            <form onSubmit={createDistrict}>
+              <input
+                type="text"
+                value={districtName}
+                onChange={(e) => setDistrictName(e.target.value)}
+                placeholder="District name"
+                className="w-full p-3 border rounded-lg mb-4"
+                disabled={submitting}
+              />
+              <button
+                type="submit"
+                disabled={submitting || !districtName.trim()}
+                className="w-full bg-primary text-white p-3 rounded-lg hover:bg-primary-dim disabled:opacity-50"
+              >
+                {submitting ? "un instant..." : "Enregistrer un district"}
+              </button>
+            </form>
+          </div>
+
+          {/* Create Club */}
+          <div className="bg-background border rounded-lg p-6">
+            <h2 className="text-xl font-semibold mb-4">inscrire un club</h2>
+            <form onSubmit={createClub}>
+              <select
+                value={selectedDistrictId}
+                onChange={(e) => setSelectedDistrictId(e.target.value)}
+                className="w-full p-3 border rounded-lg mb-4"
+                disabled={submitting}
+              >
+                <option value="">Select District</option>
+                {districts.map((district) => (
+                  <option key={district.id} value={district.id}>
+                    {district.name}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="text"
+                value={clubName}
+                onChange={(e) => setClubName(e.target.value)}
+                placeholder="Club name"
+                className="w-full p-3 border rounded-lg mb-4"
+                disabled={submitting}
+              />
+              <button
+                type="submit"
+                disabled={submitting || !clubName.trim() || !selectedDistrictId}
+                className="w-full bg-primary text-white p-3 rounded-lg hover:bg-primary-dim disabled:opacity-50"
+              >
+                {submitting ? "un instant..." : "Inscrire"}
+              </button>
+            </form>
+          </div>
         </div>
 
-        {/* Create Club */}
-        <div className="bg-background border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Create Club</h2>
-          <form onSubmit={createClub}>
-            <select
-              value={selectedDistrictId}
-              onChange={(e) => setSelectedDistrictId(e.target.value)}
-              className="w-full p-3 border rounded-lg mb-4"
-              disabled={submitting}
-            >
-              <option value="">Select District</option>
-              {districts.map((district) => (
-                <option key={district.id} value={district.id}>
-                  {district.name}
-                </option>
-              ))}
-            </select>
-            <input
-              type="text"
-              value={clubName}
-              onChange={(e) => setClubName(e.target.value)}
-              placeholder="Club name"
-              className="w-full p-3 border rounded-lg mb-4"
-              disabled={submitting}
-            />
-            <button
-              type="submit"
-              disabled={submitting || !clubName.trim() || !selectedDistrictId}
-              className="w-full bg-primary text-background p-3 rounded-lg hover:bg-primary-dim disabled:opacity-50"
-            >
-              {submitting ? "Creating..." : "Create Club"}
-            </button>
-          </form>
-        </div>
-      </div>
+        {/* Clubs List */}
+        <div className="mt-8 bg-background border-muted-foreground text-foreground border rounded-lg p-6">
+          <h2 className="text-xl font-semibold mb-4">Clubs ({clubs.length})</h2>
+          <div className="grid gap-2">
+            {clubs.map((club) => (
+              <div
+                key={club.id}
+                className="flex justify-between items-center p-3 bg-border rounded"
+              >
+                <div>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link
+                        key={club.id}
+                        href={`/admin/clubs/${club.id}/players`}
+                      >
+                        <span className="inline-flex items-center gap-1 font-medium hover:underline">
+                          {club.name}
+                          <ArrowUpRight className="w-4 h-4" />
+                        </span>{" "}
+                        {"  "}
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Imprimer la page des joueurs</p>
+                    </TooltipContent>
+                  </Tooltip>
 
-      {/* Districts List */}
-      <div className="mt-8 bg-background border-muted-foreground text-foreground border rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">
-          Zone ({districts.length})
-        </h2>
-        <div className="grid gap-2">
-          {districts.map((district) => (
-            <div
-              key={district.id}
-              className="flex justify-between items-center p-3 bg-border rounded"
-            >
-              <span className="font-medium">{district.name}</span>
-              <span className="text-sm">{district._count.clubs} clubs</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Clubs List */}
-      <div className="mt-8 bg-background border-muted-foreground text-foreground border rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">Clubs ({clubs.length})</h2>
-        <div className="grid gap-2">
-          {clubs.map((club) => (
-            <div
-              key={club.id}
-              className="flex justify-between items-center p-3 bg-border rounded"
-            >
-              <div>
-                <span className="font-medium">{club.name}</span>
-                <span className="text-sm text-muted-foreground ml-2">
-                  ({club.district.name})
-                </span>
+                  <span className="text-sm text-muted-foreground ml-2">
+                    ({club.district.name})
+                  </span>
+                </div>
+                <span className="text-sm">{club._count.licenses} players</span>
               </div>
-              <span className="text-sm">{club._count.licenses} players</span>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Districts List */}
+        <div className="mt-8 bg-background border-muted-foreground text-foreground border rounded-lg p-6">
+          <h2 className="text-xl font-semibold mb-4">
+            District ({districts.length})
+          </h2>
+          <div className="grid gap-2">
+            {districts.map((district) => (
+              <div
+                key={district.id}
+                className="flex justify-between items-center p-3 bg-border rounded"
+              >
+                <span className="font-medium">{district.name}</span>
+                <span className="text-sm">{district._count.clubs} clubs</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

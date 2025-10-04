@@ -61,7 +61,6 @@ export default function ClubInfoSection({
       );
       setFilteredClubs(filtered);
 
-      // Update district name in form data
       const selectedDistrict = districts.find(
         (d) => d.id === selectedDistrictId,
       );
@@ -73,7 +72,7 @@ export default function ClubInfoSection({
     } else {
       setFilteredClubs([]);
     }
-  }, [selectedDistrictId, clubs, districts, onChange]);
+  }, [selectedDistrictId, clubs]);
 
   const handleDistrictChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedDistrictId(e.target.value);

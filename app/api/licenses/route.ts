@@ -74,13 +74,13 @@ export async function POST(request: NextRequest) {
       surname,
       dateOfBirth,
       address,
-      clubId, // Changed from clubName and district to clubId
+      clubId,
+      state,
       photoUrl,
       expiryDate,
       transfers = [],
     } = body;
 
-    // Validate club exists
     const club = await prisma.club.findUnique({
       where: { id: clubId },
       include: { district: true },
@@ -90,7 +90,24 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Club not found" }, { status: 400 });
     }
 
-    // Generate unique license number
+    const existingLicense = await prisma.license.findFirst({
+      where: {
+        name,
+        surname,
+        dateOfBirth: new Date(dateOfBirth),
+      },
+    });
+
+    if (existingLicense) {
+      return NextResponse.json(
+        {
+          error:
+            "Une licence existe déjà pour cette personne (même nom, prénom et date de naissance)",
+        },
+        { status: 409 },
+      );
+    }
+
     let licenseNumber = generateLicenseNumber();
     let isUnique = false;
 
@@ -115,7 +132,7 @@ export async function POST(request: NextRequest) {
           dateOfBirth: new Date(dateOfBirth),
           address,
           clubId,
-          // Keep old fields for backward compatibility
+          state,
           clubName: club.name,
           district: club.district.name,
           photoUrl,

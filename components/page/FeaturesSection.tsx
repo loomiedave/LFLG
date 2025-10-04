@@ -9,7 +9,8 @@ export default function FeaturesSection() {
             Pourquoi utiliser notre système ?
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Un système fiable et sécurisé pour la bonne gestion du football Togolais a la base.
+            Un système fiable et sécurisé pour la bonne gestion du football
+            Togolais a la base.
           </p>
         </div>
 
@@ -23,7 +24,8 @@ export default function FeaturesSection() {
             </h3>
             <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed">
               Accédez à toutes les licences actives des joueurs et entraîneurs
-              officiellement enregistrés auprès du District Prefectoral de football Lome-Golfe. 
+              officiellement enregistrés auprès du District Prefectoral de
+              football Lome-Golfe.
             </p>
           </div>
 

@@ -16,10 +16,10 @@ export default function DistrictsPage() {
       });
   }, []);
 
-  if (loading) return <div className="p-8">Loading...</div>;
+  if (loading) return <div className="p-8 mt-8">Loading...</div>;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-8">
       <h1 className="text-3xl font-bold mb-8">Districts</h1>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
