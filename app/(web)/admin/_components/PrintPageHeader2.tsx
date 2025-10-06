@@ -26,6 +26,7 @@ export default function PrintPageHeader2() {
         <h2 className="text-[6px] font-semibold text-gray-900 truncate">
           DISTRICT PRÉFECTORAL DE FOOTBALL LOME-GOLFE
         </h2>
+        <p className="text-blue-600 font-medium text-[6px]">Saison 2024-2029</p>
       </div>
 
       {/* Right logo */}
