@@ -6,7 +6,6 @@ import { useParams } from "next/navigation";
 import { useReactToPrint } from "react-to-print";
 import { ClubWithLicenses } from "@/types/type";
 import { getAge, formatDate } from "@/lib/utils";
-import PrintPageHeader from "../../../_components/PrintPageHeader";
 import PrintPageHeader2 from "../../../_components/PrintPageHeader2";
 
 export default function PlayersPage() {
@@ -126,7 +125,6 @@ export default function PlayersPage() {
 
       <div ref={printRef}>
         <div className="bg-white p-4 text-black">
-          <PrintPageHeader />
           <h1 className="text-xl font-bold mb-2 text-gray-600">{club.name}</h1>
           <div className="grid grid-cols-4 gap-2">
             {currentPlayers.map((license) => (
