@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function PrintPageHeader() {
   return (
-    <div className="flex items-center bg-white justify-between gap-4 border-gray-400 mb-4">
+    <div className="flex items-center bg-white justify-between gap-4 border-gray-400 mb-1">
       <div className="flex-shrink-0">
         <Image
           src="/centerImage.png"
@@ -14,8 +14,8 @@ export default function PrintPageHeader() {
         />
       </div>
 
-      <div className="flex-1 px-2 sm:px-4 md:px-6 lg:px-8">
-        <div className="flex flex-col justify-center items-center h-full space-y-1">
+      <div className="flex-1 px-2">
+        <div className="flex flex-col justify-center items-center h-full">
           <h3 className="text-md font-medium text-gray-800 text-center leading-tight">
             Fédération togolaise de football
           </h3>
